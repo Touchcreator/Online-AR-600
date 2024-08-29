@@ -1,4 +1,5 @@
 import math
+import random
 
 def invalid_option():
     print("Invalid option, aborting...")
@@ -12,8 +13,17 @@ sideNames = [ # Define valid letters for future input
     "h"
 ]
 
+# Demo run
+print("\033[33mDemo:")
+print("Finding angle with tan...")
+testOpposite = random.random()*5
+testAdjacent = random.random()*5
+testSolvedAngle = math.degrees(math.atan(testOpposite/testAdjacent))
+print("The solved angle is " + str(round(testSolvedAngle,2)) + " degrees")
+
+
 try: # To check if the input is an integer
-    solvingFor = int(input("Are you solving for a missing side or a missing angle? (1 for side, 2 for angle): "))
+    solvingFor = int(input("\n\033[39mAre you solving for a missing side or a missing angle? (1 for side, 2 for angle): "))
 except ValueError:
     invalid_option()
 if int(solvingFor) == 1:
@@ -50,7 +60,7 @@ if int(solvingFor) == 1:
     # Printing results
 
     units = input("What units are being used? ")
-    print("The unknown side is " + str(round(solvedSideLength,2)) + " " + units + " in length.")
+    print("\nThe unknown side is " + str(round(solvedSideLength,2)) + " " + units + " in length.")
 
 elif int(solvingFor) == 2:
     knownCombination = int(input("What combination of sides are known? (1 = The opposite and hypotenuse, 2 = The adjacent and hypotenuse, 3 = The opposite and adjacent): "))
@@ -80,6 +90,6 @@ elif int(solvingFor) == 2:
             invalid_option()
     else:
         invalid_option()
-    print("The solved angle is " + str(round(solvedAngle,2)) + " degrees")
+    print("\nThe solved angle is " + str(round(solvedAngle,2)) + " degrees")
 else:
     invalid_option()
